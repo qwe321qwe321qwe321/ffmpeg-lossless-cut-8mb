@@ -1,0 +1,5 @@
+FFmpeg Binary: 
+**Download command-line binary instead of GUI application**
+https://ffmpeg.org/download.html#repositories
+https://www.gyan.dev/ffmpeg/builds/ ----> ffmpeg-5.0.1-essentials_build.zip
+https://github.com/BtbN/FFmpeg-Builds/releases ----> ffmpeg-master-latest-win64-gpl.zip
