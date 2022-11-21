@@ -31,8 +31,8 @@ CUR_DURATION=0
 BASENAME="${FILE%.*}"
 
 # Extension for the video parts
-#EXTENSION="${FILE##*.}"
-EXTENSION="mp4"
+EXTENSION="${FILE##*.}"
+# EXTENSION="mp4"
 
 # Number of the current video part
 i=1
