@@ -2,6 +2,8 @@
 # Short script to split videos by filesize using ffmpeg by LukeLR
 # https://stackoverflow.com/questions/38259544/using-ffmpeg-to-split-video-files-by-size
 FFMPEG_DIR=./ffmpeg
+FFMPEG_EXE=$$FFMPEG_DIR/ffmpeg.exe
+FFPROBE_EXE=$$FFMPEG_DIR/ffprobe.exe
 
 if [ $# -ne 3 ]; then
     echo 'Illegal number of parameters. Needs 3 parameters:'
@@ -22,7 +24,7 @@ FFMPEG_ARGS="$3"
 
 
 # Duration of the source video
-DURATION=$($FFMPEG_DIR/ffprobe.exe -i "$FILE" -show_entries format=duration -v quiet -of default=noprint_wrappers=1:nokey=1|cut -d. -f1)
+DURATION=($FFPROBE_EXE -i "$FILE" -show_entries format=duration -v quiet -of default=noprint_wrappers=1:nokey=1|cut -d. -f1)
 
 # Duration that has been encoded so far
 CUR_DURATION=0
@@ -45,8 +47,8 @@ echo "Duration of source video: $DURATION"
 # Until the duration of all partial videos has reached the duration of the source video
 while [[ $CUR_DURATION -lt $DURATION ]]; do
     # Encode next part
-    echo $FFMPEG_DIR/ffmpeg.exe -i "$FILE" -ss "$CUR_DURATION" -fs "$SIZELIMIT" $FFMPEG_ARGS "$NEXTFILENAME"
-    $FFMPEG_DIR/ffmpeg.exe -ss "$CUR_DURATION" -i "$FILE" -fs "$SIZELIMIT" $FFMPEG_ARGS "$NEXTFILENAME"
+    echo $FFMPEG_EXE -i "$FILE" -ss "$CUR_DURATION" -fs "$SIZELIMIT" $FFMPEG_ARGS "$NEXTFILENAME"
+    $FFMPEG_EXE -ss "$CUR_DURATION" -i "$FILE" -fs "$SIZELIMIT" $FFMPEG_ARGS "$NEXTFILENAME"
 
     # Duration of the new part
     NEW_DURATION=$($FFMPEG_DIR/ffprobe.exe -i "$NEXTFILENAME" -show_entries format=duration -v quiet -of default=noprint_wrappers=1:nokey=1|cut -d. -f1)
