@@ -2,8 +2,8 @@
 # Short script to split videos by filesize using ffmpeg by LukeLR
 # https://stackoverflow.com/questions/38259544/using-ffmpeg-to-split-video-files-by-size
 FFMPEG_DIR=./ffmpeg
-FFMPEG_EXE=$$FFMPEG_DIR/ffmpeg.exe
-FFPROBE_EXE=$$FFMPEG_DIR/ffprobe.exe
+FFMPEG_EXE=$FFMPEG_DIR/ffmpeg.exe
+FFPROBE_EXE=$FFMPEG_DIR/ffprobe.exe
 
 if [ $# -ne 3 ]; then
     echo 'Illegal number of parameters. Needs 3 parameters:'
