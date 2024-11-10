@@ -1,3 +1,4 @@
 ffmpeg/*
 !ffmpeg/put_ffmpeg_and_ffprobe_to_here.txt
+!ffmpeg/make_symbolic_link_from_path_mac.sh
 
