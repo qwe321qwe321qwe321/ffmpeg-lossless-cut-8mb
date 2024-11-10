@@ -21,9 +21,8 @@ FILE="$1"
 SIZELIMIT="$2"
 FFMPEG_ARGS="$3"
 
-
 # Duration of the source video
-DURATION=($FFPROBE_EXE -i "$FILE" -show_entries format=duration -v quiet -of default=noprint_wrappers=1:nokey=1|cut -d. -f1)
+DURATION=$($FFPROBE_EXE -i "$FILE" -show_entries format=duration -v quiet -of default=noprint_wrappers=1:nokey=1|cut -d. -f1)
 
 # Duration that has been encoded so far
 CUR_DURATION=0
